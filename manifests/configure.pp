@@ -1,29 +1,29 @@
 
 class collectd::configure (
-	$collectd_conf = "/etc/collectd/collectd.conf",
-	$collection_conf = "/etc/collectd/collection.conf",
-	$filters_conf = "/etc/collectd/filters.conf",
-	$thresholds_conf = "/etc/collectd/thresholds.conf"
+	$collectd_conf = $collect::params::collectd_conf,
+	$collection_conf = $collectd::params::collection_conf,
+	$filters_conf = $collectd::params::filters_conf,
+	$thresholds_conf = $collectd::params::thresholds_conf
+) inherits collectd::params {
 
-) {
 	file { $collectd_conf :
 		ensure => file,
-		content => template('collectd/collectd.conf.erb'),
+		#content => template('collectd/collectd.conf.erb'),
 	}
 
 	file { $collection_conf :
 		ensure => file,
-		content => template('collectd/collection.conf.erb'),
+		#content => template('collectd/collection.conf.erb'),
 	}
 
 	file { $filters_conf :
 		ensure => file,
-		content => template('collectd/filters.conf.erb'),
+		#content => template('collectd/filters.conf.erb'),
 	}
 
 	file { $thresholds_conf :
 		ensure => file,
-		content => template('collectd/thresholds.conf.erb'),
+		#content => template('collectd/thresholds.conf.erb'),
 	}
 
 }
