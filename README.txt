@@ -11,6 +11,31 @@ three basic modes:
 
 3. Agent -- where the host also sends its data to another host.
 
+Each of the three modes is easy to configure. For stand-alone operation, just 
+include the class:
+
+    include collectd
+
+To operate a server, first include the configuration:
+
+    class { 'collectd::server' :
+    	  address => '192.128.1.1',
+	  port => '25826', # optional
+	  username => 'myusername',
+	  password => 'asecret',
+    }
+    include collectd
+
+Configuring an agent is almost identical:
+
+    class { 'collectd::agent' :
+    	  address => '192.128.1.1',
+	  port => '25826', # optional
+	  username => 'myusername',
+	  password => 'asecret',
+    }
+    include collectd
+
 There are number of rather annoying limitations which will be fixed in future
 revisions to this module. In no particular order:
 
