@@ -1,6 +1,6 @@
 
 class collectd::configure (
-	$collectd_conf = $collect::params::collectd_conf,
+	$collectd_conf = $collectd::params::collectd_conf,
 	$collection_conf = $collectd::params::collection_conf,
 	$filters_conf = $collectd::params::filters_conf,
 	$thresholds_conf = $collectd::params::thresholds_conf
