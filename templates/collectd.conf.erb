@@ -70,7 +70,11 @@ LoadPlugin memory
 #LoadPlugin multimeter
 #LoadPlugin mysql
 #LoadPlugin netlink
+<% if enable_network -%>
+LoadPlugin network
+<% else -%>
 #LoadPlugin network
+<% end -%>
 #LoadPlugin nfs
 #LoadPlugin nginx
 #LoadPlugin notify_desktop
@@ -438,35 +442,36 @@ LoadPlugin users
 #	IgnoreSelected false
 #</Plugin>
 
-#<Plugin network>
-#	# client setup:
-#	Server "ff18::efc0:4a42" "25826"
-#	<Server "239.192.74.66" "25826">
-#		SecurityLevel Encrypt
-#		Username "user"
-#		Password "secret"
-#		Interface "eth0"
-#	</Server>
-#	TimeToLive "128"
-#
-#	# server setup:
-#	Listen "ff18::efc0:4a42" "25826"
-#	<Listen "239.192.74.66" "25826">
-#		SecurityLevel Sign
-#		AuthFile "/etc/collectd/passwd"
-#		Interface "eth0"
-#	</Listen>
-#	MaxPacketSize 1024
-#
-#	# proxy setup (client and server as above):
-#	Forward true
-#
-#	# statistics about the network plugin itself
-#	ReportStats false
-#
-#	# "garbage collection"
-#	CacheFlush 1800
-#</Plugin>
+<% if enable_network -%>
+<Plugin network>
+<% if "" != forward_address -%>
+	# client setup:
+	<Server "<%= forward_address %>" "<%= forward_port %>">
+		SecurityLevel Encrypt
+		Username "<%= network_username %>"
+		Password "<%= network_password %>"
+	</Server>
+	TimeToLive "128"
+<% end -%>
+<% if "" != listen_address -%>
+	# server setup:
+	<Listen "<%= listen_address %>" "<%=  listen_port %>">
+		SecurityLevel Encrypt
+		AuthFile "<%= password_file %>"
+	</Listen>
+<% end -%>
+	MaxPacketSize 1024
+
+	# proxy setup (client and server as above):
+	# Forward true
+
+	# statistics about the network plugin itself
+	ReportStats false
+
+	# "garbage collection"
+	CacheFlush 1800
+</Plugin>
+<% end -%>
 
 #<Plugin nginx>
 #	URL "http://localhost/status?auto"
