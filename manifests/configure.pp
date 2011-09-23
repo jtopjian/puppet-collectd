@@ -13,7 +13,9 @@ class collectd::configure (
   $network_password = ""
 ) inherits collectd::params {
 
+  # Configuration derived from the parameters above
   $enable_network = ("$listen_address$forward_address" != "")
+  $store_data = ("$forward_address" == "")
 
   file { $collectd_conf :
     ensure => file,
