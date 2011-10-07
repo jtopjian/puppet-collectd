@@ -1110,18 +1110,21 @@ LoadPlugin vmem
 #	SocketGroup "collectd"
 #	SocketPerms "0660"
 #</Plugin>
+
 <% end -%>
 <% if plugins.include? "uuid" -%>
 # TODO: specify source of UUID
 #<Plugin uuid>
 #	UUIDFile "/etc/uuid"
 #</Plugin>
+
 <% end -%>
 <% if plugins.include? "vmem" -%>
 # TODO: parameterise.
 <Plugin vmem>
 	Verbose false
 </Plugin>
+
 <% end -%>
 <% if plugins.include? "write_http" -%>
 #<Plugin write_http>
