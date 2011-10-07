@@ -5,6 +5,7 @@ class collectd::configure (
   $filters_conf = $collectd::params::filters_conf,
   $thresholds_conf = $collectd::params::thresholds_conf,
   $password_file = $collectd::params::password_file,
+  $plugins = $collectd::params::plugins,
   $listen_address = "",
   $listen_port = "",
   $forward_address = "",

@@ -15,5 +15,7 @@ class collectd::params {
   
   $password_file = "/etc/collectd/passwd"
 
+  $plugins = [syslog, cpu, df, disk, entropy, interface, load, memory, process, swap, uptime, users, vmem]
+
 }
 
