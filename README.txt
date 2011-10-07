@@ -20,9 +20,9 @@ To operate a server, first include the configuration:
 
     class { 'collectd::server' :
     	  address => '192.128.1.1',
-	  port => '25826', # optional
-	  username => 'myusername',
-	  password => 'asecret',
+	      port => '25826', # optional
+	      username => 'myusername',
+	      password => 'asecret',
     }
     include collectd
 
@@ -30,9 +30,9 @@ Configuring an agent is almost identical:
 
     class { 'collectd::agent' :
     	  address => '192.128.1.1',
-	  port => '25826', # optional
-	  username => 'myusername',
-	  password => 'asecret',
+        port => '25826', # optional
+        username => 'myusername',
+        password => 'asecret',
     }
     include collectd
 
