@@ -30,91 +30,244 @@ LoadPlugin syslog
 	LogLevel info
 </Plugin>
 
+<% if plugins.include? "apache" -%>
 #LoadPlugin apache
+<% end -%>
+<% if plugins.include? "apcups" -%>
 #LoadPlugin apcups
+<% end -%>
+<% if plugins.include? "ascent" -%>
 #LoadPlugin ascent
-#LoadPlugin battery
+<% end -%>
+<% if plugins.include? "battery" -%>
+LoadPlugin battery
+<% end -%>
+<% if plugins.include? "bind" -%>
 #LoadPlugin bind
-#LoadPlugin conntrack
-#LoadPlugin contextswitch
+<% end -%>
+<% if plugins.include? "conntrack" -%>
+LoadPlugin conntrack
+<% end -%>
+<% if plugins.include? "contextswitch" -%>
+LoadPlugin contextswitch
+<% end -%>
+<% if plugins.include? "cpu" -%>
 LoadPlugin cpu
-#LoadPlugin cpufreq
+<% end -%>
+<% if plugins.include? "cpufreq" -%>
+LoadPlugin cpufreq
+<% end -%>
+<% if plugins.include? "csv" -%>
 #LoadPlugin csv
+<% end -%>
+<% if plugins.include? "curl" -%>
 #LoadPlugin curl
+<% end -%>
+<% if plugins.include? "curl_json" -%>
 #LoadPlugin curl_json
+<% end -%>
+<% if plugins.include? "curl_xml" -%>
 #LoadPlugin curl_xml
+<% end -%>
+<% if plugins.include? "dbi" -%>
 #LoadPlugin dbi
+<% end -%>
+<% if plugins.include? "df" -%>
 LoadPlugin df
+<% end -%>
+<% if plugins.include? "disk" -%>
 LoadPlugin disk
+<% end -%>
+<% if plugins.include? "dns" -%>
 #LoadPlugin dns
+<% end -%>
+<% if plugins.include? "email" -%>
 #LoadPlugin email
+<% end -%>
+<% if plugins.include? "entropy" -%>
 LoadPlugin entropy
+<% end -%>
+<% if plugins.include? "exec" -%>
 #LoadPlugin exec
+<% end -%>
+<% if plugins.include? "filecount" -%>
 #LoadPlugin filecount
+<% end -%>
+<% if plugins.include? "fscache" -%>
 #LoadPlugin fscache
+<% end -%>
+<% if plugins.include? "gmond" -%>
 #LoadPlugin gmond
-#LoadPlugin hddtemp
+<% end -%>
+<% if plugins.include? "hddtemp" -%>
+LoadPlugin hddtemp
+<% end -%>
+<% if plugins.include? "interface" -%>
 LoadPlugin interface
+<% end -%>
+<% if plugins.include? "ipmi" -%>
 #LoadPlugin ipmi
+<% end -%>
+<% if plugins.include? "iptables" -%>
 #LoadPlugin iptables
+<% end -%>
+<% if plugins.include? "ipvs" -%>
 #LoadPlugin ipvs
-#LoadPlugin irq
+<% end -%>
+<% if plugins.include? "irq" -%>
+LoadPlugin irq
+<% end -%>
+<% if plugins.include? "java" -%>
 #LoadPlugin java
+<% end -%>
+<% if plugins.include? "libvirt" -%>
 #LoadPlugin libvirt
+<% end -%>
+<% if plugins.include? "load" -%>
 LoadPlugin load
+<% end -%>
+<% if plugins.include? "madwifi" -%>
 #LoadPlugin madwifi
+<% end -%>
+<% if plugins.include? "mbmon" -%>
 #LoadPlugin mbmon
+<% end -%>
+<% if plugins.include? "memcachec" -%>
 #LoadPlugin memcachec
+<% end -%>
+<% if plugins.include? "memcached" -%>
 #LoadPlugin memcached
+<% end -%>
+<% if plugins.include? "memory" -%>
 LoadPlugin memory
+<% end -%>
+<% if plugins.include? "multimeter" -%>
 #LoadPlugin multimeter
+<% end -%>
+<% if plugins.include? "mysql" -%>
 #LoadPlugin mysql
+<% end -%>
+<% if plugins.include? "netlink" -%>
 #LoadPlugin netlink
+<% end -%>
 <% if enable_network -%>
 LoadPlugin network
-<% else -%>
-#LoadPlugin network
 <% end -%>
+<% if plugins.include? "nfs" -%>
 #LoadPlugin nfs
+<% end -%>
+<% if plugins.include? "nginx" -%>
 #LoadPlugin nginx
+<% end -%>
+<% if plugins.include? "notify_desktop" -%>
 #LoadPlugin notify_desktop
-#LoadPlugin notify_email
+<% end -%>
+<% if plugins.include? "notify_email" -%>
+LoadPlugin notify_email
+<% end -%>
+<% if plugins.include? "ntpd" -%>
 #LoadPlugin ntpd
+<% end -%>
+<% if plugins.include? "nut" -%>
 #LoadPlugin nut
+<% end -%>
+<% if plugins.include? "olsrd" -%>
 #LoadPlugin olsrd
+<% end -%>
+<% if plugins.include? "openvpn" -%>
 #LoadPlugin openvpn
+<% end -%>
+<% if plugins.include? "perl" -%>
 #LoadPlugin perl
+<% end -%>
+<% if plugins.include? "pinba" -%>
 #LoadPlugin pinba
+<% end -%>
+<% if plugins.include? "ping" -%>
 #LoadPlugin ping
+<% end -%>
+<% if plugins.include? "postgresql" -%>
 #LoadPlugin postgresql
+<% end -%>
+<% if plugins.include? "powerdns" -%>
 #LoadPlugin powerdns
-LoadPlugin processes
-#LoadPlugin protocols
+<% end -%>
+<% if plugins.include? "processes" -%>
+#LoadPlugin processes
+<% end -%>
+<% if plugins.include? "protocols" -%>
+LoadPlugin protocols
+<% end -%>
+<% if plugins.include? "python" -%>
 #LoadPlugin python
+<% end -%>
+<% if plugins.include? "rrdcached" -%>
 #LoadPlugin rrdcached
+<% end -%>
 <% if store_data -%>
 LoadPlugin rrdtool
 <% end -%>
+<% if plugins.include? "sensors" -%>
 #LoadPlugin sensors
+<% end -%>
+<% if plugins.include? "serial" -%>
 #LoadPlugin serial
+<% end -%>
+<% if plugins.include? "snmp" -%>
 #LoadPlugin snmp
+<% end -%>
+<% if plugins.include? "swap" -%>
 LoadPlugin swap
+<% end -%>
+<% if plugins.include? "table" -%>
 #LoadPlugin table
+<% end -%>
+<% if plugins.include? "tail" -%>
 #LoadPlugin tail
+<% end -%>
+<% if plugins.include? "tcpconns" -%>
 #LoadPlugin tcpconns
+<% end -%>
+<% if plugins.include? "teamspeak2" -%>
 #LoadPlugin teamspeak2
+<% end -%>
+<% if plugins.include? "ted" -%>
 #LoadPlugin ted
+<% end -%>
+<% if plugins.include? "thermal" -%>
 #LoadPlugin thermal
+<% end -%>
+<% if plugins.include? "tokyotyrant" -%>
 #LoadPlugin tokyotyrant
+<% end -%>
+<% if plugins.include? "unixsock" -%>
 #LoadPlugin unixsock
+<% end -%>
+<% if plugins.include? "uptime" -%>
 LoadPlugin uptime
+<% end -%>
+<% if plugins.include? "users" -%>
 LoadPlugin users
-#LoadPlugin uuid
+<% end -%>
+<% if plugins.include? "uuid" -%>
+LoadPlugin uuid
+<% end -%>
+<% if plugins.include? "vmem" -%>
 LoadPlugin vmem
+<% end -%>
+<% if plugins.include? "vserver" -%>
 #LoadPlugin vserver
+<% end -%>
+<% if plugins.include? "wireless" -%>
 #LoadPlugin wireless
+<% end -%>
+<% if plugins.include? "write_http" -%>
 #LoadPlugin write_http
+<% end -%>
 
+
+<% if plugins.include? "apache" -%>
+# TODO: support parameters here
 #<Plugin apache>
 #	<Instance "foo">
 #		URL "http://localhost/server-status?auto"
@@ -132,12 +285,18 @@ LoadPlugin vmem
 #		Server "lighttpd"
 #	</Instance>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "apcups" -%>
+# TODO: support parameters here
 #<Plugin apcups>
 #	Host "localhost"
 #	Port "3551"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "ascent" -%>
+# TODO: support parameters here
 #<Plugin ascent>
 #	URL "http://localhost/ascent/status/"
 #	User "www-user"
@@ -146,7 +305,10 @@ LoadPlugin vmem
 #	VerifyHost false
 #	CACert "/etc/ssl/ca.crt"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "bind" -%>
+# TODO: support parameters here
 #<Plugin "bind">
 #	URL "http://localhost:8053/"
 #
@@ -165,12 +327,18 @@ LoadPlugin vmem
 #		Zone "127.in-addr.arpa/IN"
 #	</View>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "csv" -%>
+# TODO: support parameters here
 #<Plugin csv>
 #	DataDir "/var/lib/collectd/csv"
 #	StoreRates false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "curl" -%>
+# TODO: support parameters here
 #<Plugin curl>
 #	<Page "stock_quotes">
 #		URL "http://finance.google.com/finance?q=NYSE%3AAMD"
@@ -188,7 +356,10 @@ LoadPlugin vmem
 #		</Match>
 #	</Page>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "curl_json" -%>
+# TODO: support parameters here
 #<Plugin curl_json>
 ## See: http://wiki.apache.org/couchdb/Runtime_Statistics
 #  <URL "http://localhost:5984/_stats">
@@ -219,7 +390,10 @@ LoadPlugin vmem
 #    </Key>
 #  </URL>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "curl_xml" -%>
+# TODO: support parameters here
 #<Plugin "curl_xml">
 #	<URL "http://localhost/stats.xml">
 #		Host "my_host"
@@ -238,7 +412,10 @@ LoadPlugin vmem
 #		</XPath>
 #	</URL>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "dbi" -%>
+# TODO: support parameters here
 #<Plugin dbi>
 #	<Query "num_of_customers">
 #		Statement "SELECT 'customers' AS c_key, COUNT(*) AS c_value \
@@ -264,7 +441,10 @@ LoadPlugin vmem
 #		Query "..."
 #	</Database>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "df" -%>
+# TODO: support parameters here
 #<Plugin df>
 #	Device "/dev/sda1"
 #	Device "192.168.0.2:/mnt/nfs"
@@ -277,32 +457,47 @@ LoadPlugin vmem
 #	ReportReserved true
 #	ReportInodes false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "disk" -%>
+# TODO: support parameters here
 #<Plugin disk>
 #	Disk "hda"
 #	Disk "/sda[23]/"
 #	IgnoreSelected false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "dns" -%>
+# TODO: support parameters here
 #<Plugin dns>
 #	Interface "eth0"
 #	IgnoreSource "192.168.0.1"
 #	SelectNumericQueryTypes false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "email" -%>
+# TODO: support parameters here
 #<Plugin email>
 #	SocketFile "/var/run/collectd-email"
 #	SocketGroup "collectd"
 #	SocketPerms "0770"
 #	MaxConns 5
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "exec" -%>
+# TODO: support parameters here
 #<Plugin exec>
 #	Exec user "/path/to/exec"
 #	Exec "user:group" "/path/to/exec"
 #	NotificationExec user "/path/to/exec"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "filecount" -%>
+# TODO: support parameters here
 #<Plugin filecount>
 #	<Directory "/path/to/dir">
 #		Instance "foodir"
@@ -313,7 +508,10 @@ LoadPlugin vmem
 #		IncludeHidden false
 #	</Directory>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "gmond" -%>
+# TODO: support parameters here
 #<Plugin gmond>
 #	MCReceiveFrom "239.2.11.71" "8649"
 #
@@ -329,18 +527,27 @@ LoadPlugin vmem
 #		DataSource "value"
 #	</Metric>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "hddtemp" -%>
+# TODO: support parameters here
 #<Plugin hddtemp>
 #	Host "127.0.0.1"
 #	Port 7634
 #	TranslateDevicename false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "interface" -%>
+# TODO: support parameters here
 <Plugin interface>
 	Interface "lo"
 	IgnoreSelected true
 </Plugin>
+<% end -%>
 
+<% if plugins.include? "ipmi" -%>
+# TODO: support parameters here
 #<Plugin ipmi>
 #	Sensor "some_sensor"
 #	Sensor "another_one"
@@ -349,18 +556,27 @@ LoadPlugin vmem
 #	NotifySensorRemove true
 #	NotifySensorNotPresent false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "iptables" -%>
+# TODO: support parameters here
 #<Plugin iptables>
 #	Chain "table" "chain"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "irq" -%>
+# TODO: support parameters here
 #<Plugin irq>
 #	Irq 7
 #	Irq 8
 #	Irq 9
 #	IgnoreSelected true
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "java" -%>
+# TODO: support parameters here
 #<Plugin java>
 #	JVMArg "-verbose:jni"
 #	JVMArg "-Djava.class.path=/usr/share/collectd/java/collectd-api.jar"
@@ -371,7 +587,10 @@ LoadPlugin vmem
 #		# for an example config.
 #	</Plugin>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "libvirt" -%>
+# TODO: support parameters here
 #<Plugin libvirt>
 #	Connection "xen:///"
 #	RefreshInterval 60
@@ -381,7 +600,10 @@ LoadPlugin vmem
 #	IgnoreSelected false
 #	HostnameFormat name
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "madwifi" -%>
+# TODO: support parameters here
 #<Plugin madwifi>
 #	Interface "wlan0"
 #	IgnoreSelected false
@@ -392,12 +614,18 @@ LoadPlugin vmem
 #	WatchAdd "is_rx_acl"
 #	WatchAdd "is_scan_active"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "mbmon" -%>
+# TODO: support parameters here
 #<Plugin mbmon>
 #	Host "127.0.0.1"
 #	Port 411
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "memcachec" -%>
+# TODO: support parameters here
 #<Plugin memcachec>
 #	<Page "plugin_instance">
 #		Server "localhost"
@@ -411,14 +639,20 @@ LoadPlugin vmem
 #		</Match>
 #	</Page>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "memcached" -%>
+# TODO: support parameters here
 #<Plugin memcached>
 #	Socket "/var/run/memcached.sock"
 # or:
 #	Host "127.0.0.1"
 #	Port "11211"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "mysql" -%>
+# TODO: support parameters here
 #<Plugin mysql>
 #	<Database db_name>
 #		Host "database.serv.er"
@@ -436,7 +670,10 @@ LoadPlugin vmem
 #		SlaveNotifications true
 #	</Database>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "netlink" -%>
+# TODO: support parameters here
 #<Plugin netlink>
 #	Interface "All"
 #	VerboseInterface "All"
@@ -445,6 +682,7 @@ LoadPlugin vmem
 #	Filter "ppp0" "u32-1:0"
 #	IgnoreSelected false
 #</Plugin>
+<% end -%>
 
 <% if enable_network -%>
 <Plugin network>
@@ -477,6 +715,8 @@ LoadPlugin vmem
 </Plugin>
 <% end -%>
 
+<% if plugins.include? "nginx" -%>
+# TODO: support parameters here
 #<Plugin nginx>
 #	URL "http://localhost/status?auto"
 #	User "www-user"
@@ -485,13 +725,19 @@ LoadPlugin vmem
 #	VerifyHost false
 #	CACert "/etc/ssl/ca.crt"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "notify_desktop" -%>
+# TODO: support parameters here
 #<Plugin notify_desktop>
 #	OkayTimeout 1000
 #	WarningTimeout 5000
 #	FailureTimeout 0
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "notify_email" -%>
+# TODO: support parameters here
 #<Plugin notify_email>
 #	SMTPServer "localhost"
 #	SMTPPort 25
@@ -504,17 +750,26 @@ LoadPlugin vmem
 #	Recipient "email1@domain1.net"
 #	Recipient "email2@domain2.com"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "ntpd" -%>
+# TODO: support parameters here
 #<Plugin ntpd>
 #	Host "localhost"
 #	Port 123
 #	ReverseLookups false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "nut" -%>
+# TODO: support parameters here
 #<Plugin nut>
 #	UPS "upsname@hostname:port"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "olsrd" -%>
+# TODO: support parameters here
 #<Plugin olsrd>
 #	Host "127.0.0.1"
 #	Port "2006"
@@ -522,7 +777,10 @@ LoadPlugin vmem
 #	CollectRoutes "Summary"
 #	CollectTopology "Summary"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "openvpn" -%>
+# TODO: support parameters here
 #<Plugin openvpn>
 #	StatusFile "/etc/openvpn/openvpn-status.log"
 #	ImprovedNamingSchema false
@@ -530,7 +788,10 @@ LoadPlugin vmem
 #	CollectIndividualUsers true
 #	CollectUserCount false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "perl" -%>
+# TODO: support parameters here
 #<Plugin perl>
 #	IncludeDir "/my/include/path"
 #	BaseName "Collectd::Plugins"
@@ -543,7 +804,10 @@ LoadPlugin vmem
 #		Qux "Baz"
 #	</Plugin>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "pinba" -%>
+# TODO: support parameters here
 #<Plugin pinba>
 #	Address "::0"
 #	Port "30002"
@@ -553,7 +817,10 @@ LoadPlugin vmem
 #		Script "script name"
 #	<View>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "ping" -%>
+# TODO: support parameters here
 #<Plugin ping>
 #	Host "host.foo.bar"
 #	Host "host.baz.qux"
@@ -564,7 +831,10 @@ LoadPlugin vmem
 #	Device "eth0"
 #	MaxMissed -1
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "postgresql" -%>
+# TODO: support parameters here
 #<Plugin postgresql>
 #	<Query magic>
 #		Statement "SELECT magic FROM wizard WHERE host = $1;"
@@ -613,7 +883,10 @@ LoadPlugin vmem
 #		Query rt36_tickets
 #	</Database>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "powerdns" -%>
+# TODO: support parameters here
 #<Plugin powerdns>
 #	<Server "server_name">
 #		Collect "latency"
@@ -627,17 +900,26 @@ LoadPlugin vmem
 #	</Recursor>
 #	LocalSocket "/opt/collectd/var/run/collectd-powerdns"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "processes" -%>
+# TODO: support parameters here
 #<Plugin processes>
 #	Process "name"
 #	ProcessMatch "foobar" "/usr/bin/perl foobar\\.pl.*"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "protocols" -%>
+# TODO: support parameters here
 #<Plugin protocols>
 #	Value "/^Tcp:/"
 #	IgnoreSelected false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "python" -%>
+# TODO: support parameters here
 #<Plugin python>
 #	ModulePath "/path/to/your/python/modules"
 #	LogTraces true
@@ -648,13 +930,17 @@ LoadPlugin vmem
 #		spam "wonderful" "lovely"
 #	</Module>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "rrdcached" -%>
+# TODO: support parameters here
 #<Plugin rrdcached>
 #	DaemonAddress "unix:/var/run/rrdcached.sock"
 #	DataDir "/var/lib/rrdcached/db/collectd"
 #	CreateFiles true
 #	CollectStatistics true
 #</Plugin>
+<% end -%>
 
 <% if store_data -%>
 <Plugin rrdtool>
@@ -674,13 +960,18 @@ LoadPlugin vmem
 </Plugin>
 <% end -%>
 
+<% if plugins.include? "sensors" -%>
+# TODO: support parameters here
 #<Plugin sensors>
 #	Sensor "it8712-isa-0290/temperature-temp1"
 #	Sensor "it8712-isa-0290/fanspeed-fan3"
 #	Sensor "it8712-isa-0290/voltage-in8"
 #	IgnoreSelected false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "snmp" -%>
+# TODO: support parameters here
 # See /usr/share/doc/collectd/examples/snmp-data.conf.gz for a
 # comprehensive sample configuration.
 #<Plugin snmp>
@@ -727,7 +1018,10 @@ LoadPlugin vmem
 #		Interval 300
 #	</Host>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "table" -%>
+# TODO: support parameters here
 #<Plugin table>
 #	<Table "/proc/slabinfo">
 #		Instance "slabinfo"
@@ -746,7 +1040,10 @@ LoadPlugin vmem
 #		</Result>
 #	</Table>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "tail" -%>
+# TODO: support parameters here
 #<Plugin "tail">
 #	<File "/var/log/exim4/mainlog">
 #		Instance "exim"
@@ -765,49 +1062,71 @@ LoadPlugin vmem
 #		</Match>
 #	</File>
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "tcpconns" -%>
+# TODO: support parameters here
 #<Plugin tcpconns>
 #	ListeningPorts false
 #	LocalPort "25"
 #	RemotePort "25"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "teamspeak2" -%>
 #<Plugin teamspeak2>
 #	Host "127.0.0.1"
 #	Port "51234"
 #	Server "8767"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "ted" -%>
 #<Plugin ted>
 #	Device "/dev/ttyUSB0"
 #	Retries 0
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "thermal" -%>
+# TODO: Do we need these parameters?
 #<Plugin thermal>
 #	ForceUseProcfs false
 #	Device "THRM"
 #	IgnoreSelected false
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "tokyotyrant" -%>
 #<Plugin tokyotyrant>
 #	Host "localhost"
 #	Port "1978"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "unixsock" -%>
 #<Plugin unixsock>
 #	SocketFile "/var/run/collectd-unixsock"
 #	SocketGroup "collectd"
 #	SocketPerms "0660"
 #</Plugin>
+<% end -%>
 
+<% if plugins.include? "uuid" -%>
+# TODO: specify source of UUID
 #<Plugin uuid>
 #	UUIDFile "/etc/uuid"
 #</Plugin>
+<% end -%>
 
-#<Plugin vmem>
-#	Verbose false
-#</Plugin>
+<% if plugins.include? "vmem" -%>
+# TODO: parameterise.
+<Plugin vmem>
+	Verbose false
+</Plugin>
+<% end -%>
 
+<% if plugins.include? "write_http" -%>
 #<Plugin write_http>
 #	<URL "http://example.com/collectd-post">
 #		User "collectd"
@@ -819,6 +1138,7 @@ LoadPlugin vmem
 #		StoreRates false
 #	</URL>
 #</Plugin>
+<% end -%>
 
 Include "/etc/collectd/filters.conf"
 Include "/etc/collectd/thresholds.conf"
