@@ -58,7 +58,7 @@ LoadPlugin interface
 #LoadPlugin ipmi
 #LoadPlugin iptables
 #LoadPlugin ipvs
-LoadPlugin irq
+#LoadPlugin irq
 #LoadPlugin java
 #LoadPlugin libvirt
 LoadPlugin load
@@ -265,16 +265,18 @@ LoadPlugin users
 #	</Database>
 #</Plugin>
 
-#<Plugin df>
+<Plugin df>
 #	Device "/dev/sda1"
 #	Device "192.168.0.2:/mnt/nfs"
+	Device "tmpfs"
+	Device "udev"
 #	MountPoint "/home"
 #	FSType "ext3"
-#	IgnoreSelected false
-#	ReportByDevice false
-#	ReportReserved false
+	IgnoreSelected true
+#	ReportByDevice true
+	ReportReserved true
 #	ReportInodes false
-#</Plugin>
+</Plugin>
 
 #<Plugin disk>
 #	Disk "hda"
@@ -334,10 +336,10 @@ LoadPlugin users
 #	TranslateDevicename false
 #</Plugin>
 
-#<Plugin interface>
-#	Interface "eth0"
-#	IgnoreSelected false
-#</Plugin>
+<Plugin interface>
+	Interface "lo"
+	IgnoreSelected true
+</Plugin>
 
 #<Plugin ipmi>
 #	Sensor "some_sensor"
