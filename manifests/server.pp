@@ -3,10 +3,10 @@
 # Manages the configuration of a collectd collection server.
 #
 # Parameters:
-#   [*address*]  - address of the server to send to.
-#   [*port*]     - port the server is listening on.
-#   [*username*] - username to authenticate to the server.
-#   [*password*] - password to authenticate to the server.
+#   [*address*]  - address the server should listen on.
+#   [*port*]     - port the server should listen on.
+#   [*username*] - username to authenticate clients.
+#   [*password*] - password to authenticate clients.
 #
 # Actions:
 #
