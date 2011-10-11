@@ -13,6 +13,8 @@ class collectd::agent (
 		network_password => $password,
 	}
 
+	include collectd::service
+
 	Class['collectd::install'] -> Class['collectd::agent']
 
 }
