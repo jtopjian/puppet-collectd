@@ -1,4 +1,25 @@
-
+# Class: collectd::server
+#
+# Manages the configuration of a collectd collection server.
+#
+# Parameters:
+#   [*address*]  - address of the server to send to.
+#   [*port*]     - port the server is listening on.
+#   [*username*] - username to authenticate to the server.
+#   [*password*] - password to authenticate to the server.
+#
+# Actions:
+#
+# Requires:
+#
+# Sample Usage:
+#
+#   class { 'collectd::server' :
+#       address => "192.268.1.1",
+#       username => "anony",
+#       password => "mouse",
+#   }
+#
 class collectd::server (
 	$address,
 	$port = $collectd::params::port,
