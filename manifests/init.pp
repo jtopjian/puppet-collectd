@@ -6,5 +6,5 @@ class collectd {
 	include collectd::service
 
 	Class['collectd::install'] -> Class['collectd::configure'] ~> Class['collectd::service']
-}
 
+}

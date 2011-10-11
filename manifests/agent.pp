@@ -1,10 +1,10 @@
 
 class collectd::agent (
 	$address,
-	$port = "25826",
+	$port = $collectd::params::port,
 	$username,
 	$password
-) {
+) inherits collectd::params {
 
 	class { 'collectd::configure' :
 		forward_address => $address,

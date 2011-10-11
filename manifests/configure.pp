@@ -46,4 +46,5 @@ class collectd::configure (
 	}
 
 	Class['collectd::install'] -> Class['collectd::configure']
+
 }

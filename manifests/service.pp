@@ -8,4 +8,3 @@ class collectd::service inherits collectd::params {
 	}
 
 }
-

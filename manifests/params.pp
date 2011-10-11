@@ -17,5 +17,6 @@ class collectd::params {
 
 	$plugins = [syslog, cpu, df, disk, entropy, interface, load, memory, process, swap, uptime, users, vmem]
 
-}
+	$port = 25826
 
+}

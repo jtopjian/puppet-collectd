@@ -1,10 +1,10 @@
 
 class collectd::server (
 	$address,
-	$port="25826",
+	$port = $collectd::params::port,
 	$username,
 	$password
-) {
+) inherits collectd::params {
 
 	class { 'collectd::configure' :
 		listen_address => $address,
