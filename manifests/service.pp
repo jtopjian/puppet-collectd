@@ -1,3 +1,7 @@
+# Class: collectd::service
+#
+# Manages the collectd service.
+#
 class collectd::service inherits collectd::params {
 
 	service { 'collectd' :
@@ -7,5 +11,7 @@ class collectd::service inherits collectd::params {
 		hasrestart => true,
 	}
 
-}
+	Class['collectd::configure'] ~> Class['collectd::service']
+	Class['collectd::configure'] -> Class['collectd::service']
 
+}
