@@ -284,6 +284,11 @@ LoadPlugin vmem
 #		Host "some.domain.tld"
 #		Server "lighttpd"
 #	</Instance>
+#	<Instance "server">
+#		URL "http://localhost/status?auto"
+#		Host "<%= fqdn -%>"
+#		Server "apache"
+#	</Instance>
 #</Plugin>
 
 <% end -%>
