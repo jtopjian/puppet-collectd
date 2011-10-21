@@ -31,7 +31,7 @@ LoadPlugin syslog
 </Plugin>
 
 <% if plugins.include? "apache" -%>
-#LoadPlugin apache
+LoadPlugin apache
 <% end -%>
 <% if plugins.include? "apcups" -%>
 #LoadPlugin apcups
@@ -268,7 +268,7 @@ LoadPlugin vmem
 
 <% if plugins.include? "apache" -%>
 # TODO: support parameters here
-#<Plugin apache>
+<Plugin apache>
 #	<Instance "foo">
 #		URL "http://localhost/server-status?auto"
 #		User "www-user"
@@ -284,12 +284,12 @@ LoadPlugin vmem
 #		Host "some.domain.tld"
 #		Server "lighttpd"
 #	</Instance>
-#	<Instance "server">
-#		URL "http://localhost/status?auto"
-#		Host "<%= fqdn -%>"
-#		Server "apache"
-#	</Instance>
-#</Plugin>
+  <Instance "server">
+    URL "http://localhost/server-status?auto"
+    Host "<%= fqdn %>"
+    Server "apache"
+  </Instance>
+</Plugin>
 
 <% end -%>
 <% if plugins.include? "apcups" -%>
