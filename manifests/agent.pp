@@ -35,8 +35,9 @@ class collectd::agent (
 		network_password => $password,
 	}
 
+	include collectd::install
 	include collectd::service
 
-	Class['collectd::install'] -> Class['collectd::agent']
+	Class['collectd::install'] -> Class['collectd::agent'] -> Class['collectd::service']
 
 }
