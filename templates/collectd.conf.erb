@@ -657,24 +657,13 @@ LoadPlugin vmem
 
 <% end -%>
 <% if plugins.include? "mysql" -%>
-# TODO: support parameters here
-#<Plugin mysql>
-#	<Database db_name>
-#		Host "database.serv.er"
-#		Port "3306"
-#		User "db_user"
-#		Password "secret"
-#		Database "db_name"
-#		MasterStats true
-#	</Database>
-#
-#	<Database db_name2>
-#		Host "localhost"
-#		Socket "/var/run/mysql/mysqld.sock"
-#		SlaveStats true
-#		SlaveNotifications true
-#	</Database>
-#</Plugin>
+<Plugin mysql>
+  <Database server>
+    Host "localhost"
+    User "<%= mysql_user %>"
+    Password "<%= mysql_password %>"
+  </Database>
+</Plugin>
 
 <% end -%>
 <% if plugins.include? "netlink" -%>

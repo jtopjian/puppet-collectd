@@ -32,4 +32,7 @@ class collectd::params {
 
 	$port = 25826
 
+	$mysql_user = 'collectd'
+	$mysql_password = ''
+
 }

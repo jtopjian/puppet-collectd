@@ -11,7 +11,9 @@ class collectd::configure (
 	$forward_address = "",
 	$forward_port = "",
 	$network_username = "",
-	$network_password = ""
+	$network_password = "",
+	$mysql_user = $collectd::params::mysql_user,
+	$mysql_password = $collectd::params::mysql_password
 ) inherits collectd::params {
 
 	# Configuration derived from the parameters above
@@ -44,6 +46,7 @@ class collectd::configure (
 			content => "$network_username:$network_password\n",
 		}
 	}
+
 
 	Class['collectd::install'] -> Class['collectd::configure']
 
