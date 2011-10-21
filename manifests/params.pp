@@ -2,6 +2,15 @@
 class collectd::params {
 
 	#
+	# Packages
+	#
+
+	$packages = $operatingsystem ? {
+		debian => ['libgcrypt11', 'collectd-core'],
+		freebsd => ['libgcrypt', 'collectd'],
+	}
+
+	#
 	# Configuration file locations
 	#
 
@@ -14,6 +23,10 @@ class collectd::params {
 	$thresholds_conf = "/etc/collectd/thresholds.conf"
 
 	$password_file = "/etc/collectd/passwd"
+
+	#
+	# Default parameters
+	#
 
 	$plugins = [syslog, cpu, df, disk, entropy, interface, load, memory, process, swap, uptime, users, vmem]
 

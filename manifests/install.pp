@@ -1,12 +1,9 @@
-class collectd::install {
+class collectd::install (
+	$packages = $collectd::params::packages
+) inherits collectd::params {
 
-	package { libgcrypt11 :
+	package { $packages :
 		ensure => installed,
-	}
-
-	package { collectd-core :
-		ensure => installed,
-		require => Package['libgcrypt11'],
 	}
 
 }
