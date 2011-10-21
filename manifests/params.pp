@@ -1,5 +1,17 @@
-
-class collectd::params {
+# Class: collectd::params
+#
+# Determine default values for collectd parameters
+#
+# Parameters:
+#   [*port*]           - network port for client/server mode.
+#   [*mysql_user*]     - username for mysql plugin.
+#   [*mysql_password*] - password for mysql plugin.
+#
+class collectd::params (
+	$port = 25826,
+	$mysql_user = 'collectd',
+	$mysql_password = ''
+) {
 
 	#
 	# Packages
