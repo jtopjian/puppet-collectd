@@ -18,8 +18,9 @@ class collectd::params (
 	#
 
 	$packages = $operatingsystem ? {
-		debian => ['libgcrypt11', 'collectd-core', 'libcurl3-gnutls'],
-		freebsd => ['libgcrypt', 'collectd'],
+		debian => ['collectd-core', 'libgcrypt11', 'libcurl3-gnutls'],
+		ubuntu => ['collectd-core', 'libgcrypt11', 'libcurl3-gnutls'],
+		freebsd => ['collectd', 'libgcrypt'],
 	}
 
 	#
