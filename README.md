@@ -2,8 +2,7 @@ Puppet module for collectd
 ==========================
 
 This is a [Puppet][1] module to configure and manage [collectd][2], a system to 
-collect, aggregate and store system statistics. You can configure collectd in
-three basic modes:
+collect, aggregate and store system statistics. 
 
 This module is based off of Thomas Sutton's [original][3].
 
