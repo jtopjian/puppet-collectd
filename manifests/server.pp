@@ -7,7 +7,6 @@
 #   [*port*]     - port the server should listen on.
 #   [*username*] - username to authenticate clients.
 #   [*password*] - password to authenticate clients.
-#   [*plugins*]  - list of plugins to enable.
 #
 # Actions:
 #
@@ -22,24 +21,17 @@
 #   }
 #
 class collectd::server (
-	$address,
-	$port = $collectd::params::port,
-	$username,
-	$password,
-	$plugins = $collectd::params::plugins
+  $port      = $collectd::params::port,
+  $address,
+  $username,
+  $password
 ) inherits collectd::params {
 
-	class { 'collectd::configure' :
-		listen_address => $address,
-		listen_port => $port,
-		network_username => $username,
-		network_password => $password,
-		plugins => $plugins,
-	}
+  class { 'collectd::configure' :
+    listen_address   => $address,
+    listen_port      => $port,
+    network_username => $username,
+    network_password => $password,
+  }
 
-	include collectd::install
-	include collectd::service
-
-	Class['collectd::install'] -> Class['collectd::server']
-  
 }

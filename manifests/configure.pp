@@ -1,53 +1,67 @@
-
+# Class to configure collectd
 class collectd::configure (
-	$collectd_conf = $collectd::params::collectd_conf,
-	$collection_conf = $collectd::params::collection_conf,
-	$filters_conf = $collectd::params::filters_conf,
-	$thresholds_conf = $collectd::params::thresholds_conf,
-	$password_file = $collectd::params::password_file,
-	$plugins = $collectd::params::plugins,
-	$listen_address = "",
-	$listen_port = "",
-	$forward_address = "",
-	$forward_port = "",
-	$network_username = "",
-	$network_password = "",
-	$mysql_user = $collectd::params::mysql_user,
-	$mysql_password = $collectd::params::mysql_password
+  $collectd_conf    = $collectd::params::collectd_conf,
+  $collection_conf  = $collectd::params::collection_conf,
+  $filters_conf     = $collectd::params::filters_conf,
+  $thresholds_conf  = $collectd::params::thresholds_conf,
+  $password_file    = $collectd::params::password_file,
+  $plugins          = $collectd::params::plugins,
+  $mysql_user       = $collectd::params::mysql_user,
+  $mysql_password   = $collectd::params::mysql_password,
+  $listen_address   = '',
+  $listen_port      = '',
+  $forward_address  = '',
+  $forward_port     = '',
+  $network_username,
+  $network_password
 ) inherits collectd::params {
 
-	# Configuration derived from the parameters above
-	$enable_network = ("$listen_address$forward_address" != "")
-	$store_data = ("$forward_address" == "")
+  # file concat support
+  include concat::setup
 
-	file { $collectd_conf :
-		ensure => file,
-		content => template('collectd/collectd.conf.erb'),
-	}
+  # Set dependencies on all files
+  File {
+    require => Package[$collectd::params::collectd_package],
+    notify  => Service[$collectd::params::collectd_service],
+  }
 
-	file { $collection_conf :
-		ensure => file,
-		content => template('collectd/collection.conf.erb'),
-	}
+  # Configuration derived from the parameters above
+  $enable_network = ("$listen_address$forward_address" != "")
 
-	file { $filters_conf :
-		ensure => file,
-		content => template('collectd/filters.conf.erb'),
-	}
+  concat { $collectd_conf:
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+  }
 
-	file { $thresholds_conf :
-		ensure => file,
-		content => template('collectd/thresholds.conf.erb'),
-	}
+  # Enable the network plugin
+  if $enable_network {
+    concat::fragment { 'collectd_network':
+      target  => $collectd_conf,
+      content => template('collectd/plugins/network.erb'),
+      order   => 01,
+    }
+  }
 
-	if ($listen_address) {
-		file { $password_file :
-			ensure => file,
-			content => "$network_username:$network_password\n",
-		}
-	}
+  file { $collection_conf :
+    ensure  => file,
+    content => template('collectd/collection.conf.erb'),
+  }
 
+  file { $filters_conf :
+    ensure  => file,
+    content => template('collectd/filters.conf.erb'),
+  }
 
-	Class['collectd::install'] -> Class['collectd::configure']
+  file { $thresholds_conf :
+    ensure  => file,
+    content => template('collectd/thresholds.conf.erb'),
+  }
 
+  if ($listen_address) {
+    file { $password_file:
+      ensure  => file,
+      content => "$network_username:$network_password\n",
+    }
+  }
 }

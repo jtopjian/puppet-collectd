@@ -8,7 +8,6 @@
 #   [*port*]     - port the server is listening on.
 #   [*username*] - username to authenticate to the server.
 #   [*password*] - password to authenticate to the server.
-#   [*plugins*]  - list of plugins to enable.
 #
 # Actions:
 #
@@ -21,26 +20,17 @@
 #       username => "anony",
 #       password => "mouse",
 #   }
-#
+
 class collectd::agent (
-	$address,
-	$port = $collectd::params::port,
-	$username,
-	$password,
-	$plugins = $collectd::params::plugins
+  $port      = $collectd::params::port,
+  $address,
+  $username,
+  $password
 ) inherits collectd::params {
-
-	class { 'collectd::configure' :
-		forward_address => $address,
-		forward_port => $port,
-		network_username => $username,
-		network_password => $password,
-		plugins => $plugins,
-	}
-
-	include collectd::install
-	include collectd::service
-
-	Class['collectd::install'] -> Class['collectd::agent'] -> Class['collectd::service']
-
+  class { 'collectd::configure':
+    forward_address  => $address,
+    forward_port     => $port,
+    network_username => $username,
+    network_password => $password,
+  }
 }

@@ -1,10 +1,27 @@
+# Collectd 
+# 
+# Requires
+#  Class['concat']
+class collectd inherits collectd::params {
 
-class collectd {
+  # Install collectd dependencies
+  package { $collectd::params::dependencies:
+    ensure => installed,
+    before => Package[$collectd::params::collectd_package],
+  }
 
-	include collectd::install
-	include collectd::configure
-	include collectd::service
+  # Install the main collectd package
+  package { $collectd::params::collectd_package:
+    ensure => installed,
+  }
 
-	Class['collectd::install'] -> Class['collectd::configure'] ~> Class['collectd::service']
-
+  # Set up the collectd service
+  service { $collectd::params::collectd_service:
+    enable     => true,
+    ensure     => running,
+    hasstatus  => true,
+    hasrestart => true,
+    subscribe  => Class['collectd::configure'],
+    require    => Package[$collectd::params::collectd_package],
+  }
 }

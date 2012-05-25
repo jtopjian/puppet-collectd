@@ -2,45 +2,35 @@
 #
 # Determine default values for collectd parameters
 #
-# Parameters:
-#   [*port*]           - network port for client/server mode.
-#   [*mysql_user*]     - username for mysql plugin.
-#   [*mysql_password*] - password for mysql plugin.
-#
-class collectd::params (
-	$port = 25826,
-	$mysql_user = 'collectd',
-	$mysql_password = ''
-) {
+class collectd::params {
 
-	#
-	# Packages
-	#
+  # Packages
+  case $::osfamily {
+    'Debian': {
+      $collectd_package  = 'collectd-core'
+      $dependencies      = ['libgcrypt11', 'libcurl3-gnutls']
+      $collectd_service  = 'collectd'
+    }
 
-	$packages = $operatingsystem ? {
-		debian => ['collectd-core', 'libgcrypt11', 'libcurl3-gnutls'],
-		ubuntu => ['collectd-core', 'libgcrypt11', 'libcurl3-gnutls'],
-		freebsd => ['collectd', 'libgcrypt'],
-	}
+    'FreeBSD': {
+      $collectd_package = 'collectd'
+      $dependencies     = ['libgcrypt']
+      $collectd_service = 'collectd'
+    }
+  }
 
-	#
-	# Configuration file locations
-	#
+  # Configuration file locations
+  $collectd_conf   = '/etc/collectd/collectd.conf'
+  $collection_conf = '/etc/collectd/collection.conf'
+  $filters_conf    = '/etc/collectd/filters.conf'
+  $thresholds_conf = '/etc/collectd/thresholds.conf'
+  $password_file   = '/etc/collectd/passwd'
 
-	$collectd_conf = "/etc/collectd/collectd.conf"
+  # Settings
+  $port           = '25826'
+  $mysql_user     = 'dbuser'
+  $mysql_password = 'changeme'
 
-	$collection_conf = "/etc/collectd/collection.conf"
-
-	$filters_conf = "/etc/collectd/filters.conf"
-
-	$thresholds_conf = "/etc/collectd/thresholds.conf"
-
-	$password_file = "/etc/collectd/passwd"
-
-	#
-	# Default parameters
-	#
-
-	$plugins = [syslog, cpu, df, disk, entropy, interface, load, memory, process, swap, uptime, users, vmem]
-
+  # Default plugins
+  $plugins = ['cpu', 'df', 'disk', 'entropy', 'interface', 'load', 'memory', 'swap', 'uptime', 'users', 'vmem']
 }
