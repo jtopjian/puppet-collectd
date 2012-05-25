@@ -5,9 +5,6 @@ class collectd::configure (
   $filters_conf     = $collectd::params::filters_conf,
   $thresholds_conf  = $collectd::params::thresholds_conf,
   $password_file    = $collectd::params::password_file,
-  $plugins          = $collectd::params::plugins,
-  $mysql_user       = $collectd::params::mysql_user,
-  $mysql_password   = $collectd::params::mysql_password,
   $listen_address   = '',
   $listen_port      = '',
   $forward_address  = '',
@@ -33,13 +30,20 @@ class collectd::configure (
     group   => 'root',
     mode    => '0644',
   }
+ 
+  # collectd.conf header
+  concat::fragment { 'collectd_header':
+    target  => $collectd_conf,
+    content => template('collectd/collectd.conf.header.erb'),
+    order   => 01,
+  }
 
   # Enable the network plugin
   if $enable_network {
     concat::fragment { 'collectd_network':
       target  => $collectd_conf,
       content => template('collectd/plugins/network.erb'),
-      order   => 01,
+      order   => 02,
     }
   }
 
