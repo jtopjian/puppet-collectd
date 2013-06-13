@@ -1,0 +1,7 @@
+LoadPlugin libvirt
+<Plugin "libvirt">
+  Connection "<%= config_hash['Connection'] %>"
+  RefreshInterval <%= config_hash['RefreshInterval'] %>
+  HostnameFormat "<%= config_hash['HostnameFormat'] %>"
+</Plugin>
+

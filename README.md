@@ -74,10 +74,20 @@ node 'collectd.example.com' {
 }
 
 node 'server-01.example.com' {
-  class { 'admin::collectd::server':
-    ip_address => hiera('collectd_private_ip'),
+  class { 'admin::collectd::agent':
+    ip_address => hiera('cloud_private_ip'),
     username   => hiera('collectd_username'),
     password   => hiera('collectd_password'),
+  }
+
+  # libvirt collectd plugin
+  include collectd::plugin
+  collectd::plugin::enable { 'libvirt':
+    config_hash => {
+      'Connection'      => 'qemu:///system',
+      'RefreshInterval' => 60,
+      'HostnameFormat'  => "name"
+    }
   }
 }
 ```
