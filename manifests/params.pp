@@ -8,13 +8,11 @@ class collectd::params {
   case $::osfamily {
     'Debian': {
       $collectd_package  = 'collectd-core'
-      $dependencies      = ['libgcrypt11', 'libcurl3-gnutls']
       $collectd_service  = 'collectd'
     }
 
     'FreeBSD': {
       $collectd_package = 'collectd'
-      $dependencies     = ['libgcrypt']
       $collectd_service = 'collectd'
     }
   }

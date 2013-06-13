@@ -1,19 +1,18 @@
 #
-# Class: collectd::agent
+# == Class
+#
+# collectd::agent
 #
 # Manages the configuration of a collectd collection agent.
 #
-# Parameters:
-#   [*address*]  - address of the server to send to.
-#   [*port*]     - port the server is listening on.
-#   [*username*] - username to authenticate to the server.
-#   [*password*] - password to authenticate to the server.
+# == Parameters
 #
-# Actions:
+#  [*address*]  - address of the server to send to.
+#  [*port*]     - port the server is listening on.
+#  [*username*] - username to authenticate to the server.
+#  [*password*] - password to authenticate to the server.
 #
-# Requires:
-#
-# Sample Usage:
+# == Sample Usage
 #
 #   class { 'collectd::agent' :
 #       address => "192.268.1.1",
@@ -22,10 +21,10 @@
 #   }
 
 class collectd::agent (
-  $port      = $collectd::params::port,
   $address,
   $username,
-  $password
+  $password,
+  $port = $::collectd::params::port
 ) inherits collectd::params {
   class { 'collectd::configure':
     forward_address  => $address,

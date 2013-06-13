@@ -1,16 +1,16 @@
 # Class to configure collectd
 class collectd::configure (
-  $collectd_conf    = $collectd::params::collectd_conf,
-  $collection_conf  = $collectd::params::collection_conf,
-  $filters_conf     = $collectd::params::filters_conf,
-  $thresholds_conf  = $collectd::params::thresholds_conf,
-  $password_file    = $collectd::params::password_file,
+  $network_username,
+  $network_password,
   $listen_address   = '',
   $listen_port      = '',
   $forward_address  = '',
   $forward_port     = '',
-  $network_username,
-  $network_password
+  $collectd_conf    = $::collectd::params::collectd_conf,
+  $collection_conf  = $::collectd::params::collection_conf,
+  $filters_conf     = $::collectd::params::filters_conf,
+  $thresholds_conf  = $::collectd::params::thresholds_conf,
+  $password_file    = $::collectd::params::password_file,
 ) inherits collectd::params {
 
   # file concat support
@@ -18,8 +18,8 @@ class collectd::configure (
 
   # Set dependencies on all files
   File {
-    require => Package[$collectd::params::collectd_package],
-    notify  => Service[$collectd::params::collectd_service],
+    require => Package[$::collectd::params::collectd_package],
+    notify  => Service[$::collectd::params::collectd_service],
   }
 
   # Configuration derived from the parameters above
@@ -30,7 +30,7 @@ class collectd::configure (
     group   => 'root',
     mode    => '0644',
   }
- 
+
   # collectd.conf header
   concat::fragment { 'collectd_header':
     target  => $collectd_conf,

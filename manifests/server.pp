@@ -1,16 +1,15 @@
-# Class: collectd::server
+# == Class
+#
+# collectd::server
 #
 # Manages the configuration of a collectd collection server.
 #
-# Parameters:
+# == Parameters
+#
 #   [*address*]  - address the server should listen on.
 #   [*port*]     - port the server should listen on.
 #   [*username*] - username to authenticate clients.
 #   [*password*] - password to authenticate clients.
-#
-# Actions:
-#
-# Requires:
 #
 # Sample Usage:
 #
@@ -21,10 +20,10 @@
 #   }
 #
 class collectd::server (
-  $port      = $collectd::params::port,
   $address,
   $username,
-  $password
+  $password,
+  $port = $::collectd::params::port,
 ) inherits collectd::params {
 
   class { 'collectd::configure' :

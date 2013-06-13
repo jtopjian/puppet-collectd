@@ -1,11 +1,11 @@
 # Defines a resource that enables plugins:
-# 
+#
 #   collectd::plugin::enable { 'cpu': }
 #
 # At the moment, plugins can not be configured,
 # but this will change soon:
 #
-#   collectd::plugin::enable { 'disk': 
+#   collectd::plugin::enable { 'disk':
 #     config_hash => $config_hash,
 #   }
 
